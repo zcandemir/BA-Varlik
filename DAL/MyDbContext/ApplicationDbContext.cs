@@ -23,16 +23,16 @@ namespace DAL.MyDbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Debit>()
-               .HasOne(d => d.AssigningUser)
-              .WithMany(u => u.DebitsAssigned)
-               .HasForeignKey(d => d.AssigninguserId)
-                .OnDelete(DeleteBehavior.Restrict); // Eğer bir kullanıcı silinirse, ona bağlı zimmetler silinmesin diye kısıtlama koyuyoruz.
-           
+             .HasOne(d => d.AssigningUser)
+            .WithMany(u => u.DebitsAssigned)
+             .HasForeignKey(d => d.AssigninguserId)
+              .OnDelete(DeleteBehavior.Restrict); 
+
             modelBuilder.Entity<Debit>()
                 .HasOne(d => d.AssignedUser)
                 .WithMany(u => u.DebitsReceived)
                 .HasForeignKey(d => d.AssigneduserId)
-                .OnDelete(DeleteBehavior.Restrict); //yani kullanıcı silinirse, ona zimmetlenen kayıtlar etkilenmesin.
+                .OnDelete(DeleteBehavior.Restrict); 
 
         }
     }

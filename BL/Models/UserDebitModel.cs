@@ -4,13 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BL.Models.Abstract;
 
 namespace BL.Models
 {
-    public class UserDebitModel
+    public class UserDebitModel:BaseModel
     {
-        public int Id { get; set; }
-
         public int DebitId { get; set; }
         public int UserId { get; set; }
 

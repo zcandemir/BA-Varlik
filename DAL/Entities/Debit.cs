@@ -17,8 +17,5 @@ namespace DAL.Entities
         public  Product Product { get; set; }
         public  User AssigningUser { get; set; }
         public  User AssignedUser { get; set; }
-
-
-
     }
 }

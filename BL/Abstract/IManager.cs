@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BL.Abstract
 {
-    internal interface IManager<TModel>
+    public interface IManager<TModel>
     {
-        void Add(TModel model);
+        bool Add(TModel model);
 
         void Update(TModel model);
 
@@ -19,7 +19,7 @@ namespace BL.Abstract
 
         void RecoverDeleted(TModel model);
 
-        void Remove(TModel model);
+        void Remove(int id);
 
         List<TModel> GetAll();
 

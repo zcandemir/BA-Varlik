@@ -9,7 +9,7 @@ using DAL.Repositories.Abstract;
 
 namespace DAL.Repositories.Concrete
 {
-    internal class DebitRepositories:Repositories<Debit>
+    public class DebitRepositories:Repositories<Debit>
     {
         public DebitRepositories(ApplicationDbContext context):base (context)
         {

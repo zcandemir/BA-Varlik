@@ -47,9 +47,9 @@ namespace DAL.Repositories.Abstract
         }
 
         public void RecoverDeleted(T entity)
-        { 
+        {
 
-            
+
 
 
             entity.DeletedDate = null;
@@ -89,7 +89,7 @@ namespace DAL.Repositories.Abstract
         {
 
 
-            IQueryable<T> query = _context.Set<T>();
+            IQueryable<T> query = _context.Set<T>().AsNoTracking();
 
 
             T instance = new T();
@@ -122,10 +122,13 @@ namespace DAL.Repositories.Abstract
             return entities.AsNoTracking().FirstOrDefault(e => e.Id == id && e.Status != DataStatus.Deleted);
         }
 
-        public void Remove(T entity)
+        public void Remove(int id)
         {
-
-            entities.Remove(entity);
+            var entity = GetById(id);
+            if (entity != null)
+            {
+                entities.Remove(entity);
+            }
             _context.SaveChanges();
         }
 
@@ -200,5 +203,5 @@ namespace DAL.Repositories.Abstract
 
 
 
-    } 
+    }
 }

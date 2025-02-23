@@ -12,10 +12,10 @@ using DAL.Repositories.Abstract;
 
 namespace BL.Abstract
 {
-    internal abstract class Manager<TModel, TEntity, TMappingProfile> : IManager<TModel>
+    public abstract class Manager<TModel, TEntity, TMappingProfile> : IManager<TModel>
         where TMappingProfile : Profile, new()
         where TEntity : IEntity
-        where TModel:IModel
+        where TModel : IModel
     {
 
         private IMapper _mapper;
@@ -33,10 +33,18 @@ namespace BL.Abstract
             });
             _mapper = new Mapper(_config);
         }
-        public void Add(TModel model)
+        public bool Add(TModel model)
         {
-            TEntity entity = _mapper.Map<TEntity>(model);
-            _repositories.Add(entity);
+            try
+            {
+                TEntity entity = _mapper.Map<TEntity>(model);
+                _repositories.Add(entity);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         void IManager<TModel>.Delete(TModel model)
@@ -59,10 +67,9 @@ namespace BL.Abstract
             return model;
         }
 
-        void IManager<TModel>.Remove(TModel model)
+        void IManager<TModel>.Remove(int id)
         {
-            TEntity entity = _mapper.Map<TEntity>(model);
-            _repositories.Remove(entity);
+            _repositories.Remove(id);
         }
 
         List<TModel> IManager<TModel>.Search(Expression<Func<TModel, bool>> predicate)

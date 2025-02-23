@@ -9,7 +9,7 @@ using DAL.Repositories.Abstract;
 
 namespace DAL.Repositories.Concrete
 {
-    internal class WareHouseRepositories:Repositories<WareHouse>
+    public class WareHouseRepositories:Repositories<WareHouse>
     {
         public WareHouseRepositories(ApplicationDbContext context)
             : base(context) { } 

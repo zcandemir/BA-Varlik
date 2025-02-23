@@ -17,8 +17,8 @@ namespace DAL.Entities
         public string Model { get; set; }
         public bool Guarantee { get; set; }
 
-        public int Cost { get; set; }
-        public int CurrentPrice { get; set; }
+        public double Cost { get; set; }
+        public double CurrentPrice { get; set; }
         public string Explanation { get; set; }
         public int WarehouseId { get; set; }
 

@@ -18,9 +18,8 @@ namespace DAL.Entities
         public string? TeamName { get; set; }
 
         public List<UserDebit> UserDebits { get; set; }
-        public ICollection<Debit> DebitsReceived { get; set; }
-
-        public ICollection<Debit> DebitsAssigned { get; set; }
+        public List<Debit> DebitsReceived { get; set; }
+        public List<Debit> DebitsAssigned { get; set; }
 
     }
 }

@@ -13,6 +13,6 @@ namespace BL.Models.Abstract
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
-        public DataStatus Status { get; set; }
+        public int Status { get; set; }
     }
 }

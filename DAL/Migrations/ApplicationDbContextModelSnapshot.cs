@@ -80,14 +80,14 @@ namespace DAL.Migrations
                     b.Property<string>("BarcodeNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Cost")
-                        .HasColumnType("int");
+                    b.Property<double>("Cost")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CurrentPrice")
-                        .HasColumnType("int");
+                    b.Property<double>("CurrentPrice")
+                        .HasColumnType("float");
 
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");

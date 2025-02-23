@@ -31,7 +31,7 @@ namespace DAL.Repositories.Abstract
         public void Delete(T entity);
 
 
-        public void Remove(T entity);
+        public void Remove(int id);
 
 
 

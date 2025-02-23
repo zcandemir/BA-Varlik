@@ -15,15 +15,7 @@ namespace BL.MappingProfiles
 
         public DebitMappingProfiles()
         {
-            CreateMap<DebitModel, Debit>();
-
-            CreateMap<DebitModel, Debit>().ForMember(a => a.AssignedUser, b => b.MapFrom(c => c.AssignedUser)).ReverseMap();
-
-            CreateMap<DebitModel, Debit>().ForMember(a => a.AssigningUser, b => b.MapFrom(c => c.AssigningUser)).ReverseMap();
-
-
-
-
+            CreateMap<DebitModel, Debit>().ReverseMap();
         }   
 
     }
