@@ -30,7 +30,6 @@
         {
             btnEkle = new Button();
             btnRapor = new Button();
-            button1 = new Button();
             dgwZimmetList = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgwZimmetList).BeginInit();
             SuspendLayout();
@@ -47,22 +46,13 @@
             // 
             // btnRapor
             // 
-            btnRapor.Location = new Point(631, 211);
+            btnRapor.Location = new Point(631, 93);
             btnRapor.Name = "btnRapor";
             btnRapor.Size = new Size(128, 75);
             btnRapor.TabIndex = 0;
             btnRapor.Text = "Rapor";
             btnRapor.UseVisualStyleBackColor = true;
             btnRapor.Click += btnRapor_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(631, 109);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 75);
-            button1.TabIndex = 11;
-            button1.Text = "Zimmetten Ürün Al";
-            button1.UseVisualStyleBackColor = true;
             // 
             // dgwZimmetList
             // 
@@ -77,7 +67,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(777, 582);
-            Controls.Add(button1);
             Controls.Add(btnRapor);
             Controls.Add(dgwZimmetList);
             Controls.Add(btnEkle);
@@ -91,7 +80,6 @@
 
         private Button btnEkle;
         private Button btnRapor;
-        private Button button1;
         private DataGridView dgwZimmetList;
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dgwDebitList = new DataGridView();
+            btnDusur = new Button();
             ((System.ComponentModel.ISupportInitialize)dgwDebitList).BeginInit();
             SuspendLayout();
             // 
@@ -37,14 +38,25 @@
             dgwDebitList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgwDebitList.Location = new Point(12, 12);
             dgwDebitList.Name = "dgwDebitList";
-            dgwDebitList.Size = new Size(776, 426);
+            dgwDebitList.Size = new Size(622, 426);
             dgwDebitList.TabIndex = 0;
+            // 
+            // btnDusur
+            // 
+            btnDusur.Location = new Point(655, 12);
+            btnDusur.Name = "btnDusur";
+            btnDusur.Size = new Size(133, 75);
+            btnDusur.TabIndex = 1;
+            btnDusur.Text = "Zimmetten Düşür";
+            btnDusur.UseVisualStyleBackColor = true;
+            btnDusur.Click += btnDusur_Click;
             // 
             // UserDebitForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDusur);
             Controls.Add(dgwDebitList);
             Name = "UserDebitForm";
             Text = "UserDebitForm";
@@ -55,5 +67,6 @@
         #endregion
 
         private DataGridView dgwDebitList;
+        private Button btnDusur;
     }
 }

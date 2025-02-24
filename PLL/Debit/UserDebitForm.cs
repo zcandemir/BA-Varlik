@@ -26,6 +26,7 @@ namespace PLL.Debit
             {
                 x.Id,
                 x.CreatedDate,
+                x.IsActive,
                 ProductName = x.Product.Type,
                 AssignedUserName = x.AssignedUser.Name,
                 AssignedUserSurname = x.AssignedUser.SurName,
@@ -33,6 +34,11 @@ namespace PLL.Debit
                 AssigningUserSurname = x.AssigningUser.SurName
             }).ToList();
             dgwDebitList.DataSource = debits;
+        }
+
+        private void btnDusur_Click(object sender, EventArgs e)
+        {
+            // seçtiği debit kaydının isActive alanını false a çek ve update et.
         }
     }
 }

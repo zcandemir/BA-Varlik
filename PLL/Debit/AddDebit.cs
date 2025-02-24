@@ -54,11 +54,11 @@ namespace PLL.Debit
             debit.ProductId = Convert.ToInt32(cmbProduct.SelectedValue);
             debit.AssigneduserId = Convert.ToInt32(cmbAssigned.SelectedValue);
             debit.AssigninguserId = Convert.ToInt32(cmbAssignee.SelectedValue);
-
+            debit.IsActive = true;
             debitManager.Add(debit);
 
             MessageBox.Show("Zimmet Ataması Başarıyla Tamamlandı!");
-            this.Close();   
+            this.Close();
         }
     }
 }
