@@ -16,6 +16,8 @@ namespace BL.MappingProfiles
         public DebitMappingProfiles()
         {
             CreateMap<DebitModel, Debit>().ReverseMap();
+            CreateMap<ProductModel, Product>().ReverseMap();
+            CreateMap<UserModel, User>().ReverseMap();
         }   
 
     }

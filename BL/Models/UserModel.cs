@@ -8,7 +8,7 @@ using BL.Models.Abstract;
 
 namespace BL.Models
 {
-    public class UserModel:BaseModel
+    public class UserModel : BaseModel
     {
         public string Name { get; set; }
         public string SurName { get; set; }

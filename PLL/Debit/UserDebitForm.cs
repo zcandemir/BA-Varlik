@@ -15,19 +15,24 @@ namespace PLL.Debit
 {
     public partial class UserDebitForm : Form
     {
-        IManager<UserDebitModel> userDebitManager = new UserDebitManager();
+        IManager<DebitModel> debitManager = new DebitManager();
         private int _userId;
         public UserDebitForm(int userId)
         {
             InitializeComponent();
             _userId = userId;
 
-            var userDebitList = userDebitManager.Search(x => x.UserId == _userId).ToList();
-
-
-
+            var debits = debitManager.GetAllWithIncludes().Where(x => x.AssigneduserId == _userId).Select(x => new
+            {
+                x.Id,
+                x.CreatedDate,
+                ProductName = x.Product.Type,
+                AssignedUserName = x.AssignedUser.Name,
+                AssignedUserSurname = x.AssignedUser.SurName,
+                AssigningUserName = x.AssigningUser.Name,
+                AssigningUserSurname = x.AssigningUser.SurName
+            }).ToList();
+            dgwDebitList.DataSource = debits;
         }
-
-
     }
 }

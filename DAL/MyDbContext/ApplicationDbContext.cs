@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.MyDbContext
 {
-    public  class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : DbContext
     {
         internal DbSet<User> Users { get; set; }
         internal DbSet<Debit> Debits { get; set; }
@@ -17,7 +17,7 @@ namespace DAL.MyDbContext
         internal DbSet<WareHouse> WareHouses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-D9VP0D9\\SQLEXPRESS;database=VarlikDB;trusted_connection=true;trustservercertificate=true");
+            optionsBuilder.UseSqlServer("server=DESKTOP-D9VP0D9\\SQLEXPRESS;database=VarlikDB5;trusted_connection=true;trustservercertificate=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,13 +26,13 @@ namespace DAL.MyDbContext
              .HasOne(d => d.AssigningUser)
             .WithMany(u => u.DebitsAssigned)
              .HasForeignKey(d => d.AssigninguserId)
-              .OnDelete(DeleteBehavior.Restrict); 
+              .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Debit>()
                 .HasOne(d => d.AssignedUser)
                 .WithMany(u => u.DebitsReceived)
                 .HasForeignKey(d => d.AssigneduserId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

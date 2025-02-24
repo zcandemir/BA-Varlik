@@ -104,10 +104,7 @@ namespace DAL.Repositories.Abstract
 
             foreach (var propertyInfo in properties.Where(pi => pi.PropertyType.GetInterfaces().Where(i => i.Name == "IEntity" || i.Name == "IList").Any()).ToList())
             {
-                if (propertyInfo.Name == "Product")
-                    query = query.Include(propertyInfo.Name + ".Brand");
-                else
-                    query = query.Include(propertyInfo.Name);
+                query = query.Include(propertyInfo.Name);
             }
 
 

@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "UserDebitForm";
+            dgwDebitList = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgwDebitList).BeginInit();
+            SuspendLayout();
+            // 
+            // dgwDebitList
+            // 
+            dgwDebitList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgwDebitList.Location = new Point(12, 12);
+            dgwDebitList.Name = "dgwDebitList";
+            dgwDebitList.Size = new Size(776, 426);
+            dgwDebitList.TabIndex = 0;
+            // 
+            // UserDebitForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dgwDebitList);
+            Name = "UserDebitForm";
+            Text = "UserDebitForm";
+            ((System.ComponentModel.ISupportInitialize)dgwDebitList).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgwDebitList;
     }
 }
