@@ -10,49 +10,11 @@ namespace DAL.Repositories.Abstract
     public interface IRepositories <T>
     {
         public void Add(T entity);
-
-
-
         public void Update(T entity);
-
-
-
         public T GetById(int id);
-
-
-        public T GetByIdwithIncludes(int id);
-
-
-
-        public T GetDeletedById(int id);
-
-
-
-        public void Delete(T entity);
-
-
         public void Remove(int id);
-
-
-
         public IQueryable<T> GetAll();
-
-
-        public IQueryable<T> GetAllDeleted();
-
-
-        public IQueryable<T> Search(Expression<Func<T, bool>> predicate);
-
-
-
         public IQueryable<T> GetAllWithIncludes();
 
-
-
-        public IQueryable<T> GetAllWithSelectedIncludes(params string[] navigationProperties);
-
-
-
-        public void RecoverDeleted(T entity);
     }
 }

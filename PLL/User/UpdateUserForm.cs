@@ -41,6 +41,16 @@ namespace PLL.User
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                string.IsNullOrWhiteSpace(txtSurName.Text))
+            {
+                MessageBox.Show("TeamName boş olabilir ama onun dışında tüm alanlar dolu olmak zorundadır.!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             UserModel user = new UserModel();
             user.Id = _user.Id;
             user.Name = txtName.Text;

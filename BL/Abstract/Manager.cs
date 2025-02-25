@@ -47,11 +47,7 @@ namespace BL.Abstract
             }
         }
 
-        void IManager<TModel>.Delete(TModel model)
-        {
-            TEntity entity = _mapper.Map<TEntity>(model);
-            _repositories.Delete(entity);
-        }
+        
 
         List<TModel> IManager<TModel>.GetAll()
         {
@@ -72,13 +68,7 @@ namespace BL.Abstract
             _repositories.Remove(id);
         }
 
-        List<TModel> IManager<TModel>.Search(Expression<Func<TModel, bool>> predicate)
-        {
-            var predicateForEntity = _mapper.Map<Expression<Func<TEntity, bool>>>(predicate);
-            var entities = _repositories.Search(predicateForEntity);
-            var models = _mapper.Map<List<TModel>>(entities);
-            return models;
-        }
+        
 
         void IManager<TModel>.Update(TModel model)
         {
@@ -93,38 +83,6 @@ namespace BL.Abstract
             return models;
         }
 
-        public void RecoverDeleted(TModel model)
-        {
-            TEntity entity = _mapper.Map<TEntity>(model);
-            _repositories.RecoverDeleted(entity);
-        }
-
-        public TModel GetDeletedById(int id)
-        {
-            var entity = _repositories.GetDeletedById(id);
-            var model = _mapper.Map<TModel>(entity);
-            return model;
-        }
-
-        public List<TModel> GetAllDeleted()
-        {
-            var entities = _repositories.GetAllDeleted().ToList();
-            List<TModel> models = _mapper.Map<List<TModel>>(entities);
-            return models;
-        }
-
-        public TModel GetByIdwithIncludes(int id)
-        {
-            var entity = _repositories.GetByIdwithIncludes(id);
-            var model = _mapper.Map<TModel>(entity);
-            return model;
-        }
-
-        public List<TModel> GetAllWithSelectedIncludes(params string[] navigationProperties)
-        {
-            var entities = _repositories.GetAllWithSelectedIncludes(navigationProperties).ToList();
-            List<TModel> models = _mapper.Map<List<TModel>>(entities);
-            return models;
-        }
+        
     }
 }

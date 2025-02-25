@@ -38,15 +38,47 @@ namespace PLL
         private void btnEkle_Click(object sender, EventArgs e)
         {
 
+            
+            if (string.IsNullOrWhiteSpace(txtBarkod.Text) ||
+                string.IsNullOrWhiteSpace(txtTip.Text) ||
+                string.IsNullOrWhiteSpace(txtModel.Text) ||
+                string.IsNullOrWhiteSpace(txtMaliyet.Text) ||
+                string.IsNullOrWhiteSpace(txtGüncelFiyat.Text) ||
+                string.IsNullOrWhiteSpace(txtAciklama.Text) ||
+                cmbDepo.SelectedValue == null)
+            {
+                MessageBox.Show("Lütfen tüm alanları doldurun!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            if (!double.TryParse(txtMaliyet.Text, out double cost))
+            {
+                MessageBox.Show("Maliyet değeri geçerli bir sayı olmalıdır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtGüncelFiyat.Text, out double currentPrice))
+            {
+                MessageBox.Show("Güncel Fiyat değeri geçerli bir sayı olmalıdır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(cmbDepo.SelectedValue?.ToString(), out int warehouseId))
+            {
+                MessageBox.Show("Geçerli bir depo seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             ProductModel product = new ProductModel();
             product.IsBarcoded = true;
             product.BarcodeNo = txtBarkod.Text;
             product.Type = txtTip.Text;
             product.Model = txtModel.Text;
-            product.Cost = double.Parse(txtMaliyet.Text);
-            product.CurrentPrice = double.Parse(txtGüncelFiyat.Text);
+            product.Cost = cost;
+            product.CurrentPrice = currentPrice;
             product.Explanation = txtAciklama.Text;
-            product.WarehouseId = Convert.ToInt32(cmbDepo.SelectedValue);
+            product.WarehouseId = warehouseId;
             product.Guarantee = cbGaranti.Checked;
             
             productManager.Add(product);

@@ -32,6 +32,7 @@ namespace PLL
         {
             AddWareHouseForm frm = new AddWareHouseForm();
             frm.Show();
+            this.Close();
 
         }
 
@@ -60,17 +61,30 @@ namespace PLL
                 }
             }
             else if (dgwWareHouseList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapmadınız!");
+            }
 
 
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-             int id = Convert.ToInt32(dgwWareHouseList.SelectedRows[0].Cells["id"].Value);
-            UpdateWareHouseForm updateWareHouseForm = new UpdateWareHouseForm(id);
-            updateWareHouseForm.Show();
-            this.Close();
+            if (dgwWareHouseList.SelectedRows.Count == 1) 
+            {
+                int id = Convert.ToInt32(dgwWareHouseList.SelectedRows[0].Cells["id"].Value);
+                UpdateWareHouseForm updateWareHouseForm = new UpdateWareHouseForm(id);
+                updateWareHouseForm.Show();
+                this.Close();
+            }
+            else if (dgwWareHouseList.SelectedRows.Count > 1)
+                MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+
+
         }
     }
 }

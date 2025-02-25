@@ -45,9 +45,9 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(275, 343);
+            btnUpdate.Location = new Point(313, 343);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(100, 42);
+            btnUpdate.Size = new Size(100, 38);
             btnUpdate.TabIndex = 15;
             btnUpdate.Text = "Güncelle";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -55,7 +55,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(449, 343);
+            btnDelete.Location = new Point(485, 343);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(100, 38);
             btnDelete.TabIndex = 14;
@@ -65,7 +65,7 @@
             // 
             // btnEkle
             // 
-            btnEkle.Location = new Point(132, 343);
+            btnEkle.Location = new Point(144, 343);
             btnEkle.Name = "btnEkle";
             btnEkle.Size = new Size(100, 38);
             btnEkle.TabIndex = 13;

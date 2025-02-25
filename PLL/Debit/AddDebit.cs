@@ -48,17 +48,54 @@ namespace PLL.Debit
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtExp.Text))
+            {
+                MessageBox.Show("Açıklama boş olamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            DebitModel debit = new DebitModel();
-            debit.Explanation = txtExp.Text;
-            debit.ProductId = Convert.ToInt32(cmbProduct.SelectedValue);
-            debit.AssigneduserId = Convert.ToInt32(cmbAssigned.SelectedValue);
-            debit.AssigninguserId = Convert.ToInt32(cmbAssignee.SelectedValue);
-            debit.IsActive = true;
+            if (cmbProduct.SelectedValue == null || !int.TryParse(cmbProduct.SelectedValue.ToString(), out int productId))
+            {
+                MessageBox.Show("Lütfen geçerli bir ürün seçin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbAssigned.SelectedValue == null || !int.TryParse(cmbAssigned.SelectedValue.ToString(), out int assignedUserId))
+            {
+                MessageBox.Show("Lütfen geçerli bir zimmetlenen kullanıcı seçin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbAssignee.SelectedValue == null || !int.TryParse(cmbAssignee.SelectedValue.ToString(), out int assigningUserId))
+            {
+                MessageBox.Show("Lütfen geçerli bir zimmet atan kullanıcı seçin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (assignedUserId == assigningUserId)
+            {
+                MessageBox.Show("Atayan ve atanan kullanıcı aynı olamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            DebitModel debit = new DebitModel
+            {
+                Explanation = txtExp.Text,
+                ProductId = productId,
+                AssigneduserId = assignedUserId,
+                AssigninguserId = assigningUserId,
+                IsActive = true
+            };
+
+
             debitManager.Add(debit);
 
             MessageBox.Show("Zimmet Ataması Başarıyla Tamamlandı!");
             this.Close();
         }
+
+        
     }
 }

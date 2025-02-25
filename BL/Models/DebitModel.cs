@@ -9,6 +9,7 @@ namespace BL.Models
 {
     public class DebitModel: BaseModel
     {
+        
         public string Explanation { get; set; }
         public bool IsActive { get; set; }
         public int AssigninguserId { get; set; }

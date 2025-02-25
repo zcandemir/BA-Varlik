@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BL.Abstract;
 using BL.Concrete;
 using BL.Models;
+using DAL.Entities;
 
 namespace PLL
 {
@@ -33,16 +34,56 @@ namespace PLL
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+           
+
+            if (string.IsNullOrWhiteSpace(txtTip.Text) ||
+                string.IsNullOrWhiteSpace(txtModel.Text) ||
+                string.IsNullOrWhiteSpace(txtMaliyet.Text) ||
+                string.IsNullOrWhiteSpace(txtGüncelFiyat.Text) ||
+                string.IsNullOrWhiteSpace(txtAciklama.Text) ||
+                cmbDepo.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(txtMiktar.Text) ||
+                string.IsNullOrWhiteSpace(txtBirim.Text))
+            {
+                MessageBox.Show("Lütfen tüm alanları eksiksiz doldurun.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            if (!double.TryParse(txtMaliyet.Text, out double cost))
+            {
+                MessageBox.Show("Geçerli bir maliyet giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtGüncelFiyat.Text, out double currentPrice))
+            {
+                MessageBox.Show("Geçerli bir güncel fiyat giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtMiktar.Text, out int amount))
+            {
+                MessageBox.Show("Geçerli bir miktar giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(cmbDepo.SelectedValue?.ToString(), out int warehouseId))
+            {
+                MessageBox.Show("Geçerli bir depo seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             ProductModel product = new ProductModel();
             product.IsBarcoded = false;
             product.Type = txtTip.Text;
             product.Model = txtModel.Text;
-            product.Cost = double.Parse(txtMaliyet.Text);
-            product.CurrentPrice = double.Parse(txtGüncelFiyat.Text);
+            product.Cost = cost;
+            product.CurrentPrice = currentPrice;
             product.Explanation = txtAciklama.Text;
-            product.WarehouseId = Convert.ToInt32(cmbDepo.SelectedValue);
+            product.WarehouseId = warehouseId;
             product.Guarantee = cbGaranti.Checked;
-            product.Amount = Convert.ToInt32(txtMiktar.Text);
+            product.Amount = amount;
             product.Unit = txtBirim.Text;   
 
             productManager.Add(product);

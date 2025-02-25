@@ -33,7 +33,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox1 = new TextBox();
+            txtTeamName = new TextBox();
             txtName = new TextBox();
             txtEmail = new TextBox();
             txtPassword = new TextBox();
@@ -86,12 +86,12 @@
             label5.TabIndex = 3;
             label5.Text = "TeamName";
             // 
-            // textBox1
+            // txtTeamName
             // 
-            textBox1.Location = new Point(141, 205);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
+            txtTeamName.Location = new Point(141, 205);
+            txtTeamName.Name = "txtTeamName";
+            txtTeamName.Size = new Size(100, 23);
+            txtTeamName.TabIndex = 4;
             // 
             // txtName
             // 
@@ -141,7 +141,7 @@
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
             Controls.Add(txtName);
-            Controls.Add(textBox1);
+            Controls.Add(txtTeamName);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -160,7 +160,7 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox txtTeamName;
         private TextBox txtName;
         private TextBox txtEmail;
         private TextBox txtPassword;

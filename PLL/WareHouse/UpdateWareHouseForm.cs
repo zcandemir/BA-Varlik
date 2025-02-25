@@ -34,14 +34,16 @@ namespace PLL.WareHouse
         }
 
         private void UpdateWareHouseForm_Load(object sender, EventArgs e)
-        {
-           
-
-
-        }
+        { }
+        
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Lütfen depo adını giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             WareHouseModel wareHouseModel = new WareHouseModel();
             wareHouseModel.Id = _warehouse.Id;

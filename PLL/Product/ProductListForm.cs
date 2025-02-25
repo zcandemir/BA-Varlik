@@ -37,11 +37,13 @@ namespace PLL
             {
                 AddProductWithBarcodeForm addbarcodedProduct = new AddProductWithBarcodeForm();
                 addbarcodedProduct.Show();
+                this.Close();
             }
             else if (result == DialogResult.No)
             {
                 AddProductWithoutBarcodeForm addbarkodeProduct = new AddProductWithoutBarcodeForm();
                 addbarkodeProduct.Show();
+                this.Close();
             }
         }
 
@@ -58,6 +60,7 @@ namespace PLL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
             if (dgwProductList.SelectedRows.Count == 1)
             {
                 int id = Convert.ToInt32(dgwProductList.SelectedRows[0].Cells["id"].Value);
@@ -66,7 +69,13 @@ namespace PLL
                 this.Close();
             }
             else if (dgwProductList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            }
+            else
+            {
+                MessageBox.Show("Lütfen yapmak istediğiniz işlem için bir satır seçiniz.");
+            }
 
 
         }
@@ -97,7 +106,14 @@ namespace PLL
                 }
             }
             else if (dgwProductList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            }
+            else
+            {
+                MessageBox.Show("Lütfen yapmak istediğiniz işlem için bir satır seçiniz.");
+            }
+
         }
     }
 }

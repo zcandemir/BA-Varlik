@@ -17,16 +17,16 @@ namespace DAL.MyDbContext
         internal DbSet<WareHouse> WareHouses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-D9VP0D9\\SQLEXPRESS;database=VarlikDB5;trusted_connection=true;trustservercertificate=true");
+            optionsBuilder.UseSqlServer("server=DESKTOP-D9VP0D9\\SQLEXPRESS;database=VarlikDB6;trusted_connection=true;trustservercertificate=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Debit>()
-             .HasOne(d => d.AssigningUser)
+                .HasOne(d => d.AssigningUser)
             .WithMany(u => u.DebitsAssigned)
-             .HasForeignKey(d => d.AssigninguserId)
-              .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(d => d.AssigninguserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Debit>()
                 .HasOne(d => d.AssignedUser)

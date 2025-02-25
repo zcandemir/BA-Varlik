@@ -16,17 +16,7 @@ namespace PLL
         {
             InitializeComponent();
         }
-
-        private void AddProduct_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+              
         private void btnProductList_Click(object sender, EventArgs e)
         {
             ProductListForm plf = new ProductListForm();
@@ -35,14 +25,14 @@ namespace PLL
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            UserListForm plf = new UserListForm();
-            plf.Show();
+            UserListForm ulf = new UserListForm();
+            ulf.Show();
         }
 
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
-            WareHouseForm auf = new WareHouseForm();
-            auf.Show();
+            WareHouseForm whf = new WareHouseForm();
+            whf.Show();
         }
 
         private void btnDebit_Click(object sender, EventArgs e)

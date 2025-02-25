@@ -27,7 +27,8 @@ namespace PLL
         {
             AddUserForm addUserForm = new AddUserForm();
             addUserForm.Show();
-            UserList();
+            this.Close();
+            
         }
 
         public void UserList()
@@ -67,10 +68,19 @@ namespace PLL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgwUserList.SelectedRows[0].Cells["id"].Value);
-            UpdateUserForm updateuserform = new UpdateUserForm(id);
-            updateuserform.Show();
-            this.Close();
+            if (dgwUserList.SelectedRows.Count == 1) 
+            {
+                int id = Convert.ToInt32(dgwUserList.SelectedRows[0].Cells["id"].Value);
+                UpdateUserForm updateuserform = new UpdateUserForm(id);
+                updateuserform.Show();
+                this.Close();
+            }
+            else if (dgwUserList.SelectedRows.Count > 1)
+                MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            else
+            {
+                MessageBox.Show("Bir satır seçimi yapmadınız.");
+            }
         }
 
         private void UserListForm_Load(object sender, EventArgs e)

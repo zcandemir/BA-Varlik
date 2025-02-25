@@ -43,12 +43,16 @@ namespace PLL
                 int id = Convert.ToInt32(dgwZimmetList.SelectedRows[0].Cells["id"].Value);
                 UserDebitForm udf = new UserDebitForm(id);
                 udf.Show();
+                this.Close();
             }
             else if (dgwZimmetList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
-
-
-            
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapmadınız!");
+            }
         }
     }
 }

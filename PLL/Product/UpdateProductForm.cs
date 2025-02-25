@@ -81,33 +81,87 @@ namespace PLL
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            
+
+           
+            if (string.IsNullOrWhiteSpace(txtTip.Text) ||
+                string.IsNullOrWhiteSpace(txtModel.Text) ||
+                string.IsNullOrWhiteSpace(txtMaliyet.Text) ||
+                string.IsNullOrWhiteSpace(txtGüncelFiyat.Text) ||
+                string.IsNullOrWhiteSpace(txtAciklama.Text) ||
+                cmbDepo.SelectedValue == null)
+            {
+                MessageBox.Show("Lütfen zorunlu alanları eksiksiz doldurun.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+           
+            if (!double.TryParse(txtMaliyet.Text, out double cost))
+            {
+                MessageBox.Show("Geçerli bir maliyet giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtGüncelFiyat.Text, out double currentPrice))
+            {
+                MessageBox.Show("Geçerli bir güncel fiyat giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(cmbDepo.SelectedValue?.ToString(), out int warehouseId))
+            {
+                MessageBox.Show("Geçerli bir depo seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
             ProductModel product = new ProductModel();
 
-            product.Id=_product.Id;
+            product.Id = _product.Id;
             product.IsBarcoded = _product.IsBarcoded;
             product.Type = txtTip.Text;
             product.Model = txtModel.Text;
-            product.Cost = double.Parse(txtMaliyet.Text);
-            product.CurrentPrice = double.Parse(txtGüncelFiyat.Text);
+            product.Cost = cost;
+            product.CurrentPrice = currentPrice;
             product.Explanation = txtAciklama.Text;
-            product.WarehouseId = Convert.ToInt32(cmbDepo.SelectedValue);
+            product.WarehouseId = warehouseId;
             product.Guarantee = cbGaranti.Checked;
 
             if (_product.IsBarcoded)
             {
+                
+                if (string.IsNullOrWhiteSpace(txtBarkod.Text))
+                {
+                    MessageBox.Show("Lütfen barkod numarasını giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 product.BarcodeNo = txtBarkod.Text;
             }
             else
             {
-                product.Amount = Convert.ToInt32(txtMiktar.Text);
+                
+                if (string.IsNullOrWhiteSpace(txtMiktar.Text) || string.IsNullOrWhiteSpace(txtBirim.Text))
+                {
+                    MessageBox.Show("Lütfen miktar ve birim bilgilerini eksiksiz giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtMiktar.Text, out int amount))
+                {
+                    MessageBox.Show("Geçerli bir miktar giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                product.Amount = amount;
                 product.Unit = txtBirim.Text;
             }
 
+            
             productManager.Update(product);
 
-            this.Close();
+            
             ProductListForm productListForm = new ProductListForm();
             productListForm.Show();
+            this.Close();
         }
     }
 }

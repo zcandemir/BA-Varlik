@@ -28,11 +28,23 @@ namespace PLL
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+               string.IsNullOrWhiteSpace(txtEmail.Text) ||
+               string.IsNullOrWhiteSpace(txtPassword.Text) ||
+               string.IsNullOrWhiteSpace(txtSurName.Text))
+               
+            {
+                MessageBox.Show("TeamName boş olabilir onun dışında hepsi dolu olması zorunludur.!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             UserModel usermodel = new UserModel();
             usermodel.Name = txtName.Text;
             usermodel.Email = txtEmail.Text;
             usermodel.Password = txtPassword.Text;
             usermodel.SurName = txtSurName.Text;
+            usermodel.TeamName= txtTeamName.Text;
 
             var response = usermanager.Add(usermodel);
 
@@ -47,7 +59,7 @@ namespace PLL
             }
 
 
-           UserListForm userListForm = new UserListForm();
+            UserListForm userListForm = new UserListForm();
             userListForm.Show();
             this.Close();
 

@@ -97,6 +97,7 @@
             cmbAssigned.Name = "cmbAssigned";
             cmbAssigned.Size = new Size(121, 23);
             cmbAssigned.TabIndex = 12;
+            
             // 
             // cmbAssignee
             // 

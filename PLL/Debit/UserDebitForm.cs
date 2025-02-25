@@ -22,11 +22,12 @@ namespace PLL.Debit
             InitializeComponent();
             _userId = userId;
 
-            var debits = debitManager.GetAllWithIncludes().Where(x => x.AssigneduserId == _userId).Select(x => new
+            var debits = debitManager.GetAllWithIncludes().Where(x => x.AssigneduserId == _userId && x.IsActive == true).Select(x => new
             {
                 x.Id,
                 x.CreatedDate,
                 x.IsActive,
+                x.AssignedUser.TeamName,
                 ProductName = x.Product.Type,
                 AssignedUserName = x.AssignedUser.Name,
                 AssignedUserSurname = x.AssignedUser.SurName,
@@ -38,7 +39,32 @@ namespace PLL.Debit
 
         private void btnDusur_Click(object sender, EventArgs e)
         {
-            // seçtiği debit kaydının isActive alanını false a çek ve update et.
+            if (dgwDebitList.SelectedRows.Count == 1)
+            {
+                int id = Convert.ToInt32(dgwDebitList.SelectedRows[0].Cells["id"].Value);
+                var debit = debitManager.GetById(id);
+                if (debit != null)
+                {
+                    debit.IsActive = false;
+                    debitManager.Update(debit);
+                }
+                else
+                {
+                    MessageBox.Show("Seçilen zimmet bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (dgwDebitList.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapmadınız!");
+            }
+
+            DebitForm debitForm = new DebitForm();
+            debitForm.Show();
+            this.Close();
         }
     }
 }
