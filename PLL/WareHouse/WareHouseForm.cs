@@ -74,7 +74,7 @@ namespace PLL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgwWareHouseList.SelectedRows.Count == 1) 
+            if (dgwWareHouseList.SelectedRows.Count == 1)
             {
                 int id = Convert.ToInt32(dgwWareHouseList.SelectedRows[0].Cells["id"].Value);
                 UpdateWareHouseForm updateWareHouseForm = new UpdateWareHouseForm(id);
@@ -82,9 +82,13 @@ namespace PLL
                 this.Close();
             }
             else if (dgwWareHouseList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
-
-
+            }
+            else
+            {
+                MessageBox.Show("Lütfen bir satır seçiniz");
+            }
         }
     }
 }

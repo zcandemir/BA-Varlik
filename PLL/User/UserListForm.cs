@@ -61,7 +61,13 @@ namespace PLL
                 }
             }
             else if (dgwUserList.SelectedRows.Count > 1)
+            {
                 MessageBox.Show("Lütfen Sadece Bir Satır Seçin!");
+            }
+            else
+            {
+                MessageBox.Show("Lütfen bir satır seçiniz.");
+            }
 
             UserList();
         }
